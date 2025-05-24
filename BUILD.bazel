@@ -18,10 +18,8 @@ cc_library(
   ],
   deps = [
     "@eigen//:eigen",
+    "@lemon//:lemon",
     "//3rd/pcg32",
-    "//3rd:lemon",
-    #~ "//3rd/MapleCOMSPS_LRB/mtl",
-    #~ "//3rd/MapleCOMSPS_LRB/utils",
   ],
   visibility = ["//visibility:public"],
 )
