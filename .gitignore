@@ -15,6 +15,7 @@
 *.userprefs
 
 # Build results
+bazel-*
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/

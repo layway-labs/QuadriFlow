@@ -1,0 +1,6 @@
+cc_library(
+  name = "pcg32",
+  hdrs = ["pcg32/pcg32.h"],
+  includes = ["./"],
+  visibility = ["//visibility:public"],
+)

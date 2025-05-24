@@ -1,0 +1,6 @@
+cc_library(
+  name = "mtl",
+  hdrs = glob(["*.h"]),
+  include_prefix = "mtl",
+  visibility = ["//visibility:public"],
+)

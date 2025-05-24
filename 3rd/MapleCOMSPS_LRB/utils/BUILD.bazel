@@ -1,0 +1,10 @@
+cc_library(
+  name = "utils",
+  hdrs = glob(["*.h"]),
+  srcs = glob(["*.cc"]),
+  deps = [
+    "//3rd/MapleCOMSPS_LRB/mtl",
+  ],
+  include_prefix = "utils",
+  visibility = ["//visibility:public"],
+)

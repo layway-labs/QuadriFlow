@@ -1,0 +1,22 @@
+cc_library(
+  name = "simp",
+  hdrs = ["SimpSolver.h"],
+  srcs = ["SimpSolver.cc"],
+  include_prefix = "simp",
+  deps = [
+    "//3rd/MapleCOMSPS_LRB/core",
+    "//3rd/MapleCOMSPS_LRB/mtl",
+  ],
+  visibility = ["//visibility:public"],
+)
+
+cc_binary(
+  name = "cli",
+  srcs = ["Main.cc"],
+  deps = [
+    "@zlib//:zlib",
+    "//3rd/MapleCOMSPS_LRB/utils",
+    ":simp",
+  ],
+  visibility = ["//visibility:public"],
+)

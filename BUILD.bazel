@@ -1,0 +1,36 @@
+cc_library(
+  name = "quadriflow",
+  hdrs = glob(
+    ["src/*.hpp"],
+    exclude = [
+      "src/post-solver.h",
+    ],
+  ),
+  srcs = glob(
+    ["src/*.cpp"],
+    exclude = [
+      "src/post-solver.cpp",
+      "src/main.cpp",
+    ],
+  ),
+  defines = [
+    "WITH_OMP",
+  ],
+  deps = [
+    "@eigen//:eigen",
+    "//3rd/pcg32",
+    "//3rd:lemon",
+    #~ "//3rd/MapleCOMSPS_LRB/mtl",
+    #~ "//3rd/MapleCOMSPS_LRB/utils",
+  ],
+  visibility = ["//visibility:public"],
+)
+
+cc_binary(
+  name = "quadriflow_cli",
+  srcs = ["src/main.cpp"],
+  deps = [
+    ":quadriflow",
+  ],
+  visibility = ["//visibility:public"],
+)

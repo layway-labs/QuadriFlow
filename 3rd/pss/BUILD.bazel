@@ -1,0 +1,6 @@
+cc_library(
+  name = "pss",
+  hdrs = ["pss/*.h"],
+  includes = ["./"],
+  visibility = ["//visibility:public"],
+)

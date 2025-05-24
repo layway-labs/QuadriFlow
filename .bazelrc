@@ -1,0 +1,3 @@
+common --enable_bzlmod
+common --genrule_strategy=standalone
+common --spawn_strategy=standalone

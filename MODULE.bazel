@@ -1,0 +1,17 @@
+module(
+    name = "quadriflow",
+    version = "1.0-bazel",
+)
+
+bazel_dep(name = "aspect_bazel_lib", version = "2.9.4")
+bazel_dep(name = "bazel_skylib", version = "1.7.1")
+bazel_dep(name = "platforms", version = "0.0.11")
+bazel_dep(name = "rules_foreign_cc", version = "0.14.0")
+
+bazel_dep(name = "eigen", version = "3.4.0.bcr.3")
+bazel_dep(name = "glm", version = "1.0.0.bcr.1")
+bazel_dep(name = "glpk", version = "5.0.bcr.4")
+bazel_dep(name = "zlib", version = "1.3.1.bcr.5")
+
+non_module_dependencies = use_extension("//:extensions.bzl", "non_module_dependencies")
+use_repo(non_module_dependencies, "lemon")

@@ -1,0 +1,18 @@
+load("@rules_foreign_cc//foreign_cc:defs.bzl", "cmake")
+
+cmake(
+  name = "lemon",
+  deps = [
+    "@glpk//:glpk",
+    "@zlib//:zlib",
+  ],
+  cache_entries = {
+    "LEMON_ENABLE_GLPK": "YES",
+    "LEMON_ENABLE_COIN": "NO",
+    "LEMON_ENABLE_ILOG": "NO",
+    "LEMON_ENABLE_SOPLEX": "NO",
+  },
+  lib_source = "@lemon//:all",
+  out_static_libs = ["libemon.a"],
+  visibility = ["//visibility:public"],
+)
