@@ -17,6 +17,7 @@ cc_library(
     "WITH_OMP",
   ],
   deps = [
+    "@boost.graph//:boost.graph",
     "@eigen//:eigen",
     "@lemon//:lemon",
     "//3rd/pcg32",
