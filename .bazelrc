@@ -1,4 +1,4 @@
 common --enable_bzlmod
 common --genrule_strategy=standalone
 common --spawn_strategy=standalone
-common --registry=https://raw.githubusercontent.com/tpcms-labs/bazel-central-registry/main/
+common --registry=https://raw.githubusercontent.com/layway-labs/bazel-central-registry/main/
