@@ -143,6 +143,8 @@ add_library(
     ${quadriflow_SRC}
 )
 
+target_include_directories(quadriflow PUBLIC ${CMAKE_SOURCE_DIR})
+
 target_link_libraries(
     quadriflow
     ${TBB_LIBRARIES}
