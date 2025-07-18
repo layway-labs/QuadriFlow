@@ -62,9 +62,9 @@ endif()
 
 if(MSVC)
     # Enable M_PI and disable fopen() etc. warnings
-    ADD_DEFINITIONS(-D_USE_MATH_DEFINES -D_CRT_SECURE_NO_WARNINGS) 
+    ADD_DEFINITIONS(-D_USE_MATH_DEFINES -D_CRT_SECURE_NO_WARNINGS)
     # Disable the following warnings : C4267 and 4244 (conversions) C4018 (sign compare) and C4800 (bool to int)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W3 /wd4267 /wd4244 /wd4018 /wd4800") 
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W3 /wd4267 /wd4244 /wd4018 /wd4800")
 endif()
 
 
@@ -122,7 +122,6 @@ set(
     src/loader.hpp
     src/localsat.cpp
     src/localsat.hpp
-    src/main.cpp
     src/merge-vertex.cpp
     src/merge-vertex.hpp
     src/optimizer.cpp
@@ -139,7 +138,7 @@ set(
     src/subdivide.hpp
 )
 
-add_executable(
+add_library(
     quadriflow
     ${quadriflow_SRC}
 )
@@ -149,4 +148,14 @@ target_link_libraries(
     ${TBB_LIBRARIES}
     ${LEMON_LIBRARIES}
     ${GUROBI_LIBRARIES}
+)
+
+add_executable(
+    quadriflow_cli
+    src/main.cpp
+)
+
+target_link_libraries(
+    quadriflow_cli
+    quadriflow
 )
