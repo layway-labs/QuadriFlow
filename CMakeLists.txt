@@ -21,12 +21,14 @@ if (BUILD_TBB)
     find_package(TBB REQUIRED)
 endif(BUILD_TBB)
 
-set(LEMON_3RD_PATH 3rd/lemon-1.3.1)
+if(NOT LEMON_3RD_PATH)
+    set(LEMON_3RD_PATH ${CMAKE_SOURCE_DIR}/3rd/lemon-1.3.1)
+endif(LEMON_3RD_PATH)
 
 find_path(
     LEMON_SOURCE_ROOT_DIR
     CMakeLists.txt
-    PATHS ${CMAKE_SOURCE_DIR}/../QuadriFlow/${LEMON_3RD_PATH} NO_DEFAULT_PATH
+    PATHS ${LEMON_3RD_PATH} NO_DEFAULT_PATH
     DOC "Location of LEMON source as a CMAKE subproject"
 )
 
