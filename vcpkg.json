@@ -1,0 +1,7 @@
+{
+  "dependencies": [
+    "boost-graph",
+    "boost-program-options",
+    "eigen3"
+  ]
+}

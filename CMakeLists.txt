@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.6)
 project(QuadriFlow LANGUAGES CXX)
 
 option(BUILD_PERFORMANCE_TEST "More subdivisition for performance test" OFF)
@@ -26,7 +26,7 @@ set(LEMON_3RD_PATH 3rd/lemon-1.3.1)
 find_path(
     LEMON_SOURCE_ROOT_DIR
     CMakeLists.txt
-    PATHS ${CMAKE_SOURCE_DIR}/${LEMON_3RD_PATH} NO_DEFAULT_PATH
+    PATHS ${CMAKE_SOURCE_DIR}/../QuadriFlow/${LEMON_3RD_PATH} NO_DEFAULT_PATH
     DOC "Location of LEMON source as a CMAKE subproject"
 )
 
@@ -64,7 +64,7 @@ if(MSVC)
     # Enable M_PI and disable fopen() etc. warnings
     ADD_DEFINITIONS(-D_USE_MATH_DEFINES -D_CRT_SECURE_NO_WARNINGS)
     # Disable the following warnings : C4267 and 4244 (conversions) C4018 (sign compare) and C4800 (bool to int)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W3 /wd4267 /wd4244 /wd4018 /wd4800")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W3 /wd4267 /wd4244 /wd4018 /wd4800 /MD")
 endif()
 
 
