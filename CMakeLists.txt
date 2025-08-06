@@ -21,27 +21,10 @@ if (BUILD_TBB)
     find_package(TBB REQUIRED)
 endif(BUILD_TBB)
 
-set(LEMON_3RD_PATH 3rd/lemon-1.3.1)
+include(GNUInstallDirs)
+include(FetchContent)
 
-find_path(
-    LEMON_SOURCE_ROOT_DIR
-    CMakeLists.txt
-    PATHS ${CMAKE_SOURCE_DIR}/${LEMON_3RD_PATH} NO_DEFAULT_PATH
-    DOC "Location of LEMON source as a CMAKE subproject"
-)
-
-if (EXISTS ${LEMON_SOURCE_ROOT_DIR})
-    add_subdirectory(${LEMON_SOURCE_ROOT_DIR})
-    set(LEMON_INCLUDE_DIRS ${LEMON_SOURCE_ROOT_DIR} ${PROJECT_BINARY_DIR}/${LEMON_3RD_PATH})
-    set(LEMON_LIBRARIES lemon)
-    unset(LEMON_ROOT_DIR CACHE)
-    unset(LEMON_DIR CACHE)
-    unset(LEMON_INCLUDE_DIR CACHE)
-    unset(LEMON_LIBRARY CACHE)
-else()
-    find_package(LEMON QUIET NO_MODULE)
-    find_package(LEMON REQUIRED)
-endif()
+set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_CXX_STANDARD 14)
@@ -143,9 +126,13 @@ add_library(
     ${quadriflow_SRC}
 )
 
-target_include_directories(quadriflow PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
-    $<INSTALL_INTERFACE:src>
+
+target_include_directories(quadriflow
+  PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/>
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/>
+        ${LEMON_INCLUDE_DIR}
 )
 
 target_link_libraries(

@@ -1,0 +1,8 @@
+{
+  "dependencies": [
+    "boost-graph",
+    "boost-program-options",
+    "cgglemon",
+    "eigen3"
+  ]
+}
